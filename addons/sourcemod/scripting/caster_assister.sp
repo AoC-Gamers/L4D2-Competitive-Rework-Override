@@ -15,7 +15,7 @@ public Plugin myinfo =
 	author = "CanadaRox, Sir, Forgetest",
 	description = "Allows spectators to control their own specspeed and move vertically",
 	version = "2.3.1",
-	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 float g_fCurrentMulti[MAXPLAYERS + 1] = { 1.0, ... };

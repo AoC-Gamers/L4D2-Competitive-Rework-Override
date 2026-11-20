@@ -54,7 +54,7 @@ Uso del forward:
   - habilita o deshabilita el plugin
 - `mv_maxplayers`
   - cantidad de slots a aplicar al cargar o descargar match config
-  - `-1` restaura el valor por defecto configurado del servidor. [ReadyUp](readyup.md#capacidad-que-muestra-el-panel) da prioridad a un `mv_maxplayers` explícito y, con `-1`, pasa a `sv_maxplayers`.
+  - `-1` restaura el valor por defecto configurado del servidor. [ReadyUp](../readyup/README.md#capacidad-que-muestra-el-panel) da prioridad a un `mv_maxplayers` explícito y, con `-1`, pasa a `sv_maxplayers`.
 - `sm_match_player_limit`
   - mínimo de jugadores activos para iniciar un voto
 - `match_vote_debug`

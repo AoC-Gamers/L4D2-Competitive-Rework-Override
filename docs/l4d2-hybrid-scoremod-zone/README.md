@@ -33,9 +33,9 @@ La variante `zone` y la variante `hybrid` compartían casi toda su implementaci�
 
 - modos tradicionales como `eq` y `acemodrv` deben declarar `confogl_addcvar smplus_mode 1`
 - modos que antes cargaban `zone` no necesitan `smplus_mode 2` explícito si usan el valor por defecto
-- en flujos donde el repo original se modifica antes de instalarse, el hook `sir.default.sh` de `Docker-L4D2-AoC` es el punto correcto para aplicar esta migración sin editar el upstream
+- aplica la migración sobre las configuraciones que se instalan en el servidor
 
 ## Referencia Histórica
 
 - este documento queda como registro de la antigua variante separada
-- cualquier cambio nuevo debe documentarse en `docs/l4d2_hybrid_scoremod.md`
+- cualquier cambio nuevo debe documentarse en [la guía de Hybrid Scoremod](../l4d2-hybrid-scoremod/README.md)

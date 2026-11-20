@@ -1,20 +1,25 @@
-# CI / build outputs
-dist/
-deps/
-.build/
-build/
-build-linux/
-build-windows/
-
-# Logs and transient local artifacts
-*.log
-*.zip
-*.tar
-*.tar.gz
+# Editors and Python caches
+/.vscode/
+/.idea/
 __pycache__/
+*.pyc
 
-# OS / editor noise
+# Dependencies, build outputs and temporary directories
+/.deps/
+/.build/
+/.build-*.log
+/dist/
+/.tmp/
+/tmp/
+
+# Legacy local build directories
+/deps/
+/build/
+/build-linux/
+/build-windows/
+
+# Local logs and desktop files
+/*.log
 .DS_Store
 Thumbs.db
 desktop.ini
-tmp/

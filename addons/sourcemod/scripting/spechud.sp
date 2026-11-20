@@ -29,7 +29,7 @@ public Plugin myinfo =
 	author = "Visor, Forgetest",
 	description = "Provides different HUDs for spectators",
 	version = "3.9.0",
-	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public void OnPluginStart()

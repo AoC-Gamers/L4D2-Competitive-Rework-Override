@@ -36,7 +36,7 @@ Con esto se evita acceso inválido al team del cliente.
 
 ### Metadata
 
-- se actualizó la `url` del plugin al repositorio `AoC-Gamers/L4D2-Competitive-Rework-Fix`
+- se actualizó la `url` del plugin al repositorio `AoC-Gamers/L4D2-Competitive-Rework-Override`
 
 ## Compatibilidad
 

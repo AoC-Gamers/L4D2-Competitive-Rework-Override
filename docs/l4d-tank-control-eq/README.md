@@ -4,8 +4,8 @@
 
 Este documento describe la API pública y los cambios internos actuales de:
 
-- [l4d_tank_control_eq.sp](../addons/sourcemod/scripting/l4d_tank_control_eq.sp)
-- [l4d_tank_control_eq.inc](../addons/sourcemod/scripting/include/l4d_tank_control_eq.inc)
+- [l4d_tank_control_eq.sp](../../addons/sourcemod/scripting/l4d_tank_control_eq.sp)
+- [l4d_tank_control_eq.inc](../../addons/sourcemod/scripting/include/l4d_tank_control_eq.inc)
 
 El objetivo es exponer un `tankId` estable para el mismo Tank durante toda su vida en la ronda, distinguir Tanks `primary` y `substitute`, y entregar señales confirmadas de cambio de control.
 
@@ -207,7 +207,7 @@ Además, el serial incremental del `tankId` se mantiene en:
 
 El plugin reutiliza tipado de:
 
-- [left4dhooks_stocks.inc](../addons/sourcemod/scripting/include/left4dhooks_stocks.inc)
+- [left4dhooks_stocks.inc](../../addons/sourcemod/scripting/include/left4dhooks_stocks.inc)
 
 En lugar de `#define` locales para team/class.
 
@@ -230,7 +230,7 @@ Helpers locales actuales:
 
 El `.sp` incluye su propia biblioteca pública:
 
-- [l4d_tank_control_eq.inc](../addons/sourcemod/scripting/include/l4d_tank_control_eq.inc)
+- [l4d_tank_control_eq.inc](../../addons/sourcemod/scripting/include/l4d_tank_control_eq.inc)
 
 Eso evita duplicar tipos públicos dentro del runtime. Actualmente el caso visible es:
 

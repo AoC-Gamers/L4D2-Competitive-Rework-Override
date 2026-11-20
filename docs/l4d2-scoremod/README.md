@@ -2,7 +2,7 @@
 
 ## Estado
 
-Este documento conserva la referencia del plugin clásico. El paquete actual de Fix incluye [`l4d2_hybrid_scoremod`](l4d2_hybrid_scoremod.md), que ofrece el modelo clásico con `smplus_mode 0`.
+Este documento conserva la referencia del plugin clásico. El paquete actual de Fix incluye [`l4d2_hybrid_scoremod`](../l4d2-hybrid-scoremod/README.md), que ofrece el modelo clásico con `smplus_mode 0`.
 
 ## Plugin histórico
 

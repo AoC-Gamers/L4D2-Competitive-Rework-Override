@@ -40,7 +40,7 @@ public Plugin myinfo =
     author = "Darkid, Griffin, StarterX4, Forgetest, J.",
     description = "When a player disconnects due to crash, automatically pause the game. When they rejoin, give them a correct spawn timer.",
     version = "2.4",
-    url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+    url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 }
 
 ConVar 

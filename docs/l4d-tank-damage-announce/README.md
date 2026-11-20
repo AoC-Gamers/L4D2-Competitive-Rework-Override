@@ -42,7 +42,7 @@ Este plugin fue movido a `L4D2-Competitive-Rework-Fix` porque recibió correccio
 
 ### Metadata
 
-- se actualizó la `url` del plugin a `https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix`
+- se actualizó la `url` del plugin a `https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override`
 
 ## Compatibilidad
 

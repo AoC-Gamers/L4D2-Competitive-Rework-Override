@@ -217,7 +217,7 @@ public Plugin myinfo =
 	author		= "Altair Sossai, lechuga",
 	description = "Fix teams shuffling during map switching",
 	version		= "1.1.0",
-	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)

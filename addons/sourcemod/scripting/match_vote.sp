@@ -71,7 +71,7 @@ public Plugin myinfo =
 	author		= "vintik, Sir, StarterX4",
 	description = "!match !rmatch !chmatch - Change Hostname and Slots while you're at it!",
 	version		= "1.4",
-	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 /*****************************************************************

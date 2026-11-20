@@ -14,7 +14,7 @@ public Plugin myinfo =
 	author = "someone",
 	version = "0.2.1",
 	description = "Fixes character change exploit in 1v1, 2v2, 3v3",
-	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public void OnPluginStart()

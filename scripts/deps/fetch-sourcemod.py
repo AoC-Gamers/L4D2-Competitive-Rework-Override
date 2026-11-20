@@ -2,8 +2,8 @@
 
 import argparse
 import platform as py_platform
+import re
 import shutil
-import sys
 import tarfile
 import urllib.request
 import urllib.error
@@ -19,9 +19,11 @@ def main() -> int:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    deps_dir = root / "deps"
-    work_dir = deps_dir / f"sourcemod-{args.platform}"
     platform = args.platform or detect_platform()
+    if not re.fullmatch(r"[0-9]+\.[0-9]+", args.version):
+        parser.error("--version must be a SourceMod branch such as 1.12")
+    deps_dir = root / ".deps" / "smx"
+    work_dir = deps_dir / f"sourcemod-{platform}"
     archive_suffix = "zip" if platform == "windows" else "tar.gz"
     archive_path = deps_dir / f"sourcemod-{platform}.{archive_suffix}"
     url = f"https://www.sourcemod.net/latest.php?os={platform}&version={args.version}"

@@ -54,7 +54,7 @@ public Plugin g_myInfo = {
 	author		= "CanadaRox, Forgetest, lechuga",
 	description = "Standalone caster handler.",
 	version		= "2.0",
-	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public APLRes AskPluginLoad2(Handle hMyself, bool bLate, char[] szError, int iErrMax)

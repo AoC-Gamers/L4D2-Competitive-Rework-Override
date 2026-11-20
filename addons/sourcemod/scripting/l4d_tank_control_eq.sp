@@ -149,7 +149,7 @@ public Plugin myinfo =
     author = "arti, (Contributions by: Sheo, Sir, Altair-Sossai)",
     description = "Distributes the role of the tank evenly throughout the team, allows for overrides. (Includes forwards)",
     version = "0.0.28",
-    url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+    url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 }
 
 public void OnPluginStart()
