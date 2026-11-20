@@ -5,7 +5,7 @@
 - `addons/sourcemod/scripting/l4d_boss_percent.sp`
 - `addons/sourcemod/scripting/include/l4d2_boss_percents.inc`
 - `addons/sourcemod/translations/l4d_boss_percent.phrases.txt`
-- `addons/sourcemod/translations/es/l4d_boss_percent.phrases.txt`
+- Variantes en `translations/es/`, `translations/pt/` y `translations/chi/`.
 
 ## Motivo del cambio
 
@@ -34,6 +34,10 @@ El plugin ahora emite la notificación desde los puntos donde realmente cambia e
 
 Se mantiene el último par de valores enviados al forward.
 Si los porcentajes no cambiaron, el forward no se vuelve a disparar.
+
+### Dark Carnival: Remix
+
+El plugin lee los dígitos inmediatamente anteriores al primer signo `%` del aviso de la campaña. Acepta de uno a tres dígitos con valores entre 0 y 100. Así puede almacenar y publicar porcentajes como `5%` en el chat y en el footer de ReadyUp.
 
 ### Include actualizado
 

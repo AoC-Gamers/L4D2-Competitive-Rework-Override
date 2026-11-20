@@ -14,7 +14,7 @@ Action CmdBonus(int client, int args)
 	float	   fEffectiveTotalBonus = 0.0;
 	float	   fMaxTotalBonus = 0.0;
 
-	if (!SMPlus_IsScoremodSupported() || g_Runtime.roundOver || !client)
+	if (!SMPlus_IsScoremodSupported() || g_Runtime.roundOver || !client || !IsClientInGame(client))
 	{
 		return Plugin_Handled;
 	}
@@ -162,36 +162,34 @@ void FormatSignedBonusValue(char[] buffer, int maxlen, float value, bool asPerce
 
 Action CmdMapInfo(int client, int args)
 {
-	int author = 0;
-
-	if (!SMPlus_IsScoremodSupported())
+	if (!SMPlus_IsScoremodSupported() || (client && !IsClientInGame(client)))
 	{
 		return Plugin_Handled;
 	}
+
+	int author = client ? GetBonusMessageAuthor() : 0;
 
 	if (GetScoreMode() == SMPlusMode_Legacy)
 	{
 		float fTotalBonus = float(GetLegacyMaxBonus());
 
-		author = GetBonusMessageAuthor();
-		CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoTitle", g_iTeamSize, g_iTeamSize);
-		CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoDistance", g_iMapDistance);
-		CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoTotalBonus", RoundToFloor(fTotalBonus));
-		CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoTiebreaker", g_iPillWorth);
+		CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoTitle", g_iTeamSize, g_iTeamSize);
+		CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoDistance", g_iMapDistance);
+		CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoTotalBonus", RoundToFloor(fTotalBonus));
+		CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoTiebreaker", g_iPillWorth);
 		return Plugin_Handled;
 	}
 
 	float fMaxPillsBonus = float(g_iPillWorth * g_iTeamSize);
 	float fTotalBonus	 = g_fMapBonus + fMaxPillsBonus;
-	author			   = GetBonusMessageAuthor();
 
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoTitle", g_iTeamSize, g_iTeamSize);
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoDistance", g_iMapDistance);
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoTotalBonus", RoundToFloor(fTotalBonus));
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoHealthBonus", RoundToFloor(g_fMapHealthBonus), CalculateBonusPercent(g_fMapHealthBonus, fTotalBonus));
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoDamageBonus", RoundToFloor(g_fMapDamageBonus), CalculateBonusPercent(g_fMapDamageBonus, fTotalBonus));
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoPillsBonus", g_iPillWorth, RoundToFloor(fMaxPillsBonus), CalculateBonusPercent(fMaxPillsBonus, fTotalBonus));
-	CPrintToChatEx(client, author, "%t %t", "Tag", "MapInfoTiebreaker", g_iPillWorth);
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoTitle", g_iTeamSize, g_iTeamSize);
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoDistance", g_iMapDistance);
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoTotalBonus", RoundToFloor(fTotalBonus));
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoHealthBonus", RoundToFloor(g_fMapHealthBonus), CalculateBonusPercent(g_fMapHealthBonus, fTotalBonus));
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoDamageBonus", RoundToFloor(g_fMapDamageBonus), CalculateBonusPercent(g_fMapDamageBonus, fTotalBonus));
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoPillsBonus", g_iPillWorth, RoundToFloor(fMaxPillsBonus), CalculateBonusPercent(fMaxPillsBonus, fTotalBonus));
+	CReplyToCommandEx(client, author, "%t %t", "Tag", "MapInfoTiebreaker", g_iPillWorth);
 
 	return Plugin_Handled;
 }

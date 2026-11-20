@@ -348,33 +348,19 @@ bool IsDKR()
 // Finds a percentage from a string
 int GetPercentageFromText(const char[] text)
 {
-	// Check to see if text contains '%' - Store the index if it does
-	int index = StrContains(text, "%", false);
+	int end = FindCharInString(text, '%');
+	int start = end;
+	while (start > 0 && IsCharNumeric(text[start - 1]))
+		start--;
 
-	// If the index isn't -1 (No '%' found) then find the percentage
-	if (index > -1)
-	{
-		char sBuffer[12];    // Where our percentage will be kept.
+	int digits = end - start;
+	if (digits < 1 || digits > 3)
+		return -1;
 
-		// If the 3rd character before the '%' symbol is a number it's 100%.
-		if (IsCharNumeric(text[index - 3]))
-		{
-			return 100;
-		}
-
-		// Check to see if the characters that are 1 and 2 characters before our '%' symbol are numbers
-		if (IsCharNumeric(text[index - 2]) && IsCharNumeric(text[index - 1]))
-		{
-			// If both characters are numbers combine them into 1 string
-			FormatEx(sBuffer, sizeof(sBuffer), "%c%c", text[index - 2], text[index - 1]);
-
-			// Convert our string to an int
-			return StringToInt(sBuffer);
-		}
-	}
-
-	// Couldn't find a percentage
-	return -1;
+	char number[4];
+	strcopy(number, digits + 1, text[start]);
+	int percentage = StringToInt(number);
+	return percentage <= 100 ? percentage : -1;
 }
 
 /*

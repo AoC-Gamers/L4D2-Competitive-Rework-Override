@@ -4,7 +4,8 @@
 
 - `addons/sourcemod/scripting/caster_system.sp`
 - `addons/sourcemod/scripting/include/caster_system.inc`
-- `addons/sourcemod/translations/es/caster_system.phrases.txt`
+- `addons/sourcemod/translations/caster_system.phrases.txt`
+- Variantes en `translations/es/` y `translations/pt/`. Las claves propias de Fix que faltan en portugués recurren al archivo base.
 
 ## Motivo del Override
 
@@ -100,7 +101,9 @@ Notas:
 - `sm_caster_wl_ls`
 - `sm_caster_wl_clear`
 
-Los comandos de registro/remoción ya no abren menús cuando se ejecutan sin argumentos; en ese caso muestran su forma de uso. La navegación por menú queda centralizada en `topmenu`.
+Los comandos administrativos de registro y remoción muestran su forma de uso cuando se ejecutan sin argumentos. La navegación por menú queda centralizada en `topmenu`.
+
+En juego, `sm_cast`, `sm_uncast` y `sm_kickspecs` requieren que el cliente haya terminado de conectarse. En la consola del servidor o por RCON, `sm_cast <target|steamid>` y `sm_uncast <target|steamid>` usan los manejadores administrativos. Desde ese mismo canal, `sm_kickspecs` aplica las reglas de expulsión existentes y anuncia la acción como ejecutada por el servidor.
 
 ## Compatibilidad
 

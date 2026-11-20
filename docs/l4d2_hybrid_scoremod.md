@@ -29,6 +29,12 @@ En `Coop`, `Scavenge`, `Survival` u otros modos:
 - el score base queda en `0`
 - la API sigue disponible para bonus externos
 
+## Comandos de puntuación
+
+`sm_mapinfo` responde por chat o consola según el origen del comando, incluida la consola del servidor y RCON. En `legacy` muestra distancia, bonus total y desempate. En `hybrid` y `zone` añade el desglose de salud, daño y píldoras.
+
+`sm_health`, `sm_damage` y `sm_bonus` requieren un cliente en juego. Los cuatro comandos están disponibles cuando el plugin aplica su modelo de puntuación en Versus.
+
 ## API Publica
 
 El include expone:

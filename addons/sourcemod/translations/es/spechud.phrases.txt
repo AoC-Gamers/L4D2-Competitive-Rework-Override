@@ -343,14 +343,14 @@
 
 	"Spechud_HybridStats"
 	{
-		"#format"	"{1:.0f},{2:.0f},{3:d},{4:.0f}"
-		"es"		"> Vida: {1:.0f}%% | Daño: {2:.0f}%% | Píldoras: {3} / {4:.0f}%%"
+		"#format"	"{1:d},{2:.0f},{3:d},{4:.0f},{5:d},{6:.0f}"
+		"es"		"> Vida: {1} <{2:.0f}%%> | Daño: {3} <{4:.0f}%%> | Píldoras: {5} <{6:.0f}%%>"
 	}
 
 	"Spechud_HybridLegacyStats"
 	{
-		"#format"	"{1:.0f}"
-		"es"		"> Vida: {1:.0f}%%"
+		"#format"	"{1:d},{2:.0f}"
+		"es"		"> Vida: {1} <{2:.0f}%%>"
 	}
 
 	"Spechud_BonusValue"

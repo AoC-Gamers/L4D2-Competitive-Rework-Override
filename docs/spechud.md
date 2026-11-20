@@ -1,16 +1,15 @@
 # spechud
 
-## Entry Point
+## Fuente principal
 
 - `addons/sourcemod/scripting/spechud.sp`
 
-## Modules
+## Módulos
 
 - `addons/sourcemod/scripting/spechud/types.sp`
 - `addons/sourcemod/scripting/spechud/helpers.sp`
 - `addons/sourcemod/scripting/spechud/runtime.sp`
 - `addons/sourcemod/scripting/spechud/render.sp`
-- `addons/sourcemod/scripting/include/client_name_helpers.inc`
 
 ## Motivo del cambio
 
@@ -36,10 +35,7 @@ Se agregaron estructuras para concentrar estado relacionado:
   - `readyUp`
   - `pause`
   - `l4dBossPercent`
-  - `hybridScoremodZone`
   - `hybridScoremod`
-  - `scoremod`
-  - `healthTempBonus`
   - `tankControlEq`
   - `lerpMonitor`
   - `witchAndTankifier`
@@ -78,10 +74,17 @@ La construcción del HUD quedó más segmentada:
 - las funciones de contenido deciden internamente si pintan algo
 - el estado de bosses, round y runtime se consume desde structs en lugar de globals sueltos
 
+### Actualización del panel y paso a live
+
+- El HUD se actualiza cada segundo. Las filas de supervivientes e infectados especiales muestran la latencia en milisegundos o `BOT`. Los nombres largos se recortan sin partir caracteres UTF-8.
+- En Versus, el panel muestra los puntos y el porcentaje del máximo en cada componente del bonus que informa el modo de `l4d2_hybrid_scoremod`. En `legacy` se muestra el componente de salud.
+- La reserva de munición de cada arma, incluida la MP5, se consulta a Left4DHooks mediante `L4D_GetReserveAmmo()`.
+- Al pasar a live, el plugin espera 0,2 segundos antes de ejecutar `sm_spectate` para los espectadores humanos, para dar tiempo a que suene la campana. Si la ronda termina, se reinicia o cambia el mapa durante la espera, el timer se cancela.
+
 ### Localización
 
 El panel sigue construyéndose por cliente, así que cada receptor obtiene el HUD en su idioma.
-Los nombres propios y clases del juego se conservan en inglés donde corresponde.
+Los nombres propios y clases del juego se conservan en inglés donde corresponde. El archivo en portugués brasileño cubre los avisos de activación y uso del HUD. Las frases restantes recurren al archivo base.
 
 ### Estructura interna
 
@@ -96,7 +99,6 @@ El plugin fue dividido por responsabilidad:
 
 - si `l4d_boss_percent` está presente, `spechud` consume el forward
 - si la biblioteca no está disponible, `spechud` mantiene fallback seguro para la sincronización inicial
-- el build actual compila limpio
 
 ## Resultado
 

@@ -150,10 +150,10 @@ public void OnPluginStart()
 
 Action OnMatchRequest(int client, int args)
 {
-	LogDebug("OnMatchRequest called by client %N with args %d", client, args);
-
 	if (!bCanHandleClientCommand(client, "OnMatchRequest"))
 		return Plugin_Handled;
+
+	LogDebug("OnMatchRequest called by client %N with args %d", client, args);
 
 	bool bUseChangeFlow = LGO_IsMatchModeLoaded();
 
@@ -184,10 +184,10 @@ Action OnMatchRequest(int client, int args)
 
 Action OnChangeMatchRequest(int client, int args)
 {
-	LogDebug("OnChangeMatchRequest called by client %N with args %d", client, args);
-
 	if (!bCanHandleClientCommand(client, "OnChangeMatchRequest"))
 		return Plugin_Handled;
+
+	LogDebug("OnChangeMatchRequest called by client %N with args %d", client, args);
 
 	if (!LGO_IsMatchModeLoaded())
 	{
@@ -217,10 +217,10 @@ Action OnChangeMatchRequest(int client, int args)
 
 Action OnMatchReset(int client, int args)
 {
-	LogDebug("OnMatchReset called by client %N with args %d", client, args);
-
 	if (!bCanHandleClientCommand(client, "OnMatchReset"))
 		return Plugin_Handled;
+
+	LogDebug("OnMatchReset called by client %N with args %d", client, args);
 
 	if (!LGO_IsMatchModeLoaded())
 	{
@@ -285,6 +285,9 @@ void vApplyConfiguredMaxPlayers()
 
 bool bCanHandleClientCommand(int client, const char[] context)
 {
+	if (client && !IsClientInGame(client))
+		return false;
+
 	if (!g_cvEnabled.BoolValue)
 	{
 		if (client)

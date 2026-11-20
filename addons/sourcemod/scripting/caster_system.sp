@@ -1048,6 +1048,12 @@ Action aWhitelistRemoveCmd(int iClient, int iArgs)
 
 Action aSelfRegCastCmd(int iClient, int iArgs)
 {
+	if (iClient == SERVER_INDEX)
+		return aCasterRegCmd(iClient, iArgs);
+
+	if (!IsClientInGame(iClient))
+		return Plugin_Handled;
+
 	bool bIsAdmin = (GetUserAdmin(iClient) != INVALID_ADMIN_ID);
 	if (iArgs != 0)
 	{
@@ -1060,12 +1066,6 @@ Action aSelfRegCastCmd(int iClient, int iArgs)
 		char szArguments[256];
 		GetCmdArgString(szArguments, sizeof(szArguments));
 		FakeClientCommandEx(iClient, "sm_caster %s", szArguments);
-		return Plugin_Handled;
-	}
-
-	if (iClient == SERVER_INDEX)
-	{
-		CReplyToCommand(iClient, "%t %t: sm_cast <#userid|name|steamid>", "Prefix", "Use");
 		return Plugin_Handled;
 	}
 
@@ -1118,14 +1118,14 @@ Action aSelfRegCastCmd(int iClient, int iArgs)
 
 Action aSelfRemoveCastCmd(int iClient, int iArgs)
 {
+	if (iClient == SERVER_INDEX)
+		return aCasterRemoveCmd(iClient, iArgs);
+
+	if (!IsClientInGame(iClient))
+		return Plugin_Handled;
+
 	if (iArgs == 0)
 	{
-		if (iClient == SERVER_INDEX)
-		{
-			CReplyToCommand(iClient, "%t %t: sm_uncast <#userid|name|steamid>", "Prefix", "Use");
-			return Plugin_Handled;
-		}
-
 		char szAuthId[ACCOUNTID_LENGTH];
 		GetClientAccountIDString(iClient, szAuthId, sizeof(szAuthId));
 		int	 accountId = StringToInt(szAuthId);
@@ -1180,6 +1180,16 @@ Action aReconnectTimer(Handle timer, int client)
 
 Action aKickSpecsCmd(int iClient, int iArgs)
 {
+	if (iClient == SERVER_INDEX)
+	{
+		CreateTimer(2.0, aTimerKickSpecs);
+		CPrintToChatAll("%t %t", "Prefix", "KickSpecsConsole");
+		return Plugin_Handled;
+	}
+
+	if (!IsClientInGame(iClient))
+		return Plugin_Handled;
+
 	AdminId aAdminId = GetUserAdmin(iClient);
 	if (aAdminId != INVALID_ADMIN_ID && GetAdminFlag(aAdminId, Admin_Ban))
 	{

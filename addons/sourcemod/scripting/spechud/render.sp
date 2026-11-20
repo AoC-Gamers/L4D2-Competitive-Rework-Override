@@ -259,7 +259,7 @@ void BuildSurvivorLine(SurvivorSnapshot survivor, int target, char[] line, int l
 {
 	static char name[MAX_NAME_LENGTH];
 	static char weaponInfo[64];
-	GetClientFixedName(survivor.client, name, sizeof(name), true);
+	GetHudPlayerName(survivor.client, name, sizeof(name));
 
 	if (!survivor.alive)
 	{
@@ -323,7 +323,7 @@ bool BuildInfectedLine(InfectedSnapshot infected, int target, char[] line, int l
 	if (infected.className[0] == '\0')
 		return false;
 
-	GetClientFixedName(infected.client, name, sizeof(name), true);
+	GetHudPlayerName(infected.client, name, sizeof(name));
 	if (!infected.alive)
 	{
 		int timeLeft = RoundToFloor(L4D_GetPlayerSpawnTime(infected.client));
@@ -597,7 +597,7 @@ bool FillScoreInfo(Panel hSpecHud, int target)
 
 				if (scoreMode == SMPlusMode_Legacy)
 				{
-					FormatEx(line, sizeof(line), "%T", "Spechud_HybridLegacyStats", target, PercentFloat(healthBonus, maxHealthBonus));
+					FormatEx(line, sizeof(line), "%T", "Spechud_HybridLegacyStats", target, healthBonus, PercentFloat(healthBonus, maxHealthBonus));
 				}
 				else
 				{
@@ -606,8 +606,8 @@ bool FillScoreInfo(Panel hSpecHud, int target)
 								"%T",
 								"Spechud_HybridStats",
 								target,
-								PercentFloat(healthBonus, maxHealthBonus),
-								PercentFloat(damageBonus, maxDamageBonus),
+								healthBonus, PercentFloat(healthBonus, maxHealthBonus),
+								damageBonus, PercentFloat(damageBonus, maxDamageBonus),
 								pillsBonus, PercentFloat(pillsBonus, maxPillsBonus));
 				}
 				DrawPanelText(hSpecHud, line);

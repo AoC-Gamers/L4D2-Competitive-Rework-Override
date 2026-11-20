@@ -3,11 +3,11 @@
 #endif
 #define _readyup_util_included
 
-int GetMaxAllowedPlayers()
+int GetMaxAllowedPlayers(bool hasInfectedTeam)
 {
 	int survLimit = survivor_limit.IntValue;
 	
-	if (L4D_GetGameModeType() & (GAMEMODE_VERSUS|GAMEMODE_SCAVENGE))
+	if (hasInfectedTeam)
 	{
 		return survLimit + z_max_player_zombies.IntValue;
 	}

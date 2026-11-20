@@ -4,7 +4,7 @@
 
 - `addons/sourcemod/scripting/match_vote.sp`
 - `addons/sourcemod/translations/match_vote.phrases.txt`
-- `addons/sourcemod/translations/es/match_vote.phrases.txt`
+- Variantes en `translations/es/`, `translations/pt/` y `translations/chi/`. Las dos últimas cubren las frases compatibles con upstream y recurren al archivo base para las claves propias de Fix.
 
 ## Motivo del Override
 
@@ -54,7 +54,7 @@ Uso del forward:
   - habilita o deshabilita el plugin
 - `mv_maxplayers`
   - cantidad de slots a aplicar al cargar o descargar match config
-  - `-1` restaura el valor por defecto configurado del servidor
+  - `-1` restaura el valor por defecto configurado del servidor. [ReadyUp](readyup.md#capacidad-que-muestra-el-panel) da prioridad a un `mv_maxplayers` explícito y, con `-1`, pasa a `sv_maxplayers`.
 - `sm_match_player_limit`
   - mínimo de jugadores activos para iniciar un voto
 - `match_vote_debug`
@@ -74,6 +74,6 @@ En términos prácticos, este archivo debe considerarse un override funcional am
 
 ## Compatibilidad
 
-- mantiene el flujo base de `!match`, `!chmatch` y `!rmatch`
+- `!match`, `!chmatch` y `!rmatch` requieren un cliente en juego. La consola recibe una respuesta de comando y los clientes que todavía se están conectando se descartan antes de abrir un menú o iniciar un voto.
 - sigue dependiendo de `confogl`
 - el forward de acceso puede cambiar qué configs son visibles o ejecutables para un cliente dado

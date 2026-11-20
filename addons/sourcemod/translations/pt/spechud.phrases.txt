@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"on"
+	{
+		"pt"		"{blue}ligado{default}"
+	}
+
+	"off"
+	{
+		"pt"		"{red}desligado{default}"
+	}
+
+	"Notify_SpechudStateOn"
+	{
+		"pt"		"[{olive}HUD{default}] O HUD de espectador agora está {blue}ligado{default}"
+	}
+
+	"Notify_SpechudStateOff"
+	{
+		"pt"		"[{olive}HUD{default}] O HUD de espectador agora está {red}desligado{default}"
+	}
+
+	"Notify_TankhudStateOn"
+	{
+		"pt"		"[{olive}HUD{default}] O HUD do Tank agora está {blue}ligado{default}"
+	}
+
+	"Notify_TankhudStateOff"
+	{
+		"pt"		"[{olive}HUD{default}] O HUD do Tank agora está {red}desligado{default}"
+	}
+
+	"Notify_SpechudUsage"
+	{
+		"pt"		"{default}<{olive}HUD{default}> Digite {green}!spechud{default} no chat para alternar o {blue}HUD de Espectador"
+	}
+
+	"Notify_TankhudUsage"
+	{
+		"pt"		"{default}<{olive}HUD{default}> Digite {green}!tankhud{default} no chat para alternar o {red}HUD do Tank"
+	}
+}

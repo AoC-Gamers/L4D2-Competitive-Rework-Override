@@ -1,6 +1,10 @@
 # l4d2_scoremod
 
-## Plugin
+## Estado
+
+Este documento conserva la referencia del plugin clásico. El paquete actual de Fix incluye [`l4d2_hybrid_scoremod`](l4d2_hybrid_scoremod.md), que ofrece el modelo clásico con `smplus_mode 0`.
+
+## Plugin histórico
 
 - `addons/sourcemod/scripting/l4d2_scoremod.sp`
 - `addons/sourcemod/scripting/include/l4d2_scoremod.inc`
@@ -58,5 +62,3 @@ Este plugin fue movido a `L4D2-Competitive-Rework-Fix` porque dejó de ser una s
 
 - include propio
 - traducciones en inglés base y español
-
-Este plugin debe desplegarse junto con su include y archivos de frases.

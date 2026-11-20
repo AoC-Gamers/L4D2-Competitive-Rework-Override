@@ -83,58 +83,32 @@ Documentación del sistema de build:
 
 - [docs/build-system.md](docs/build-system.md)
 
-## Documentacion
+## Documentación
 
 Los cambios que justifican que un plugin viva en esta capa se documentan en `docs/` usando un archivo por plugin.
 
 Documentos actuales:
 
-- `docs/autopause.md`
-- `docs/caster_system.md`
-- `docs/l4d_tank_damage_announce.md`
-- `docs/l4d_votepoll_fix.md`
-- `docs/l4d2_character_fix.md`
-- `docs/l4d2_fix_team_shuffle.md`
-- `docs/l4d2_hybrid_scoremod.md`
-- `docs/l4d2_hybrid_scoremod_zone.md`
-- `docs/l4d2_scoremod.md`
-- `docs/l4d2_skill_detect.md`
-- `docs/match_vote.md`
-- `docs/readyup.md`
-- `docs/specrates.md`
+- [`autopause`](docs/autopause.md)
+- [`caster_assister`](docs/caster_assister.md)
+- [`caster_system`](docs/caster_system.md)
+- [`l4d2_character_fix`](docs/l4d2_character_fix.md)
+- [`l4d2_fix_team_shuffle`](docs/l4d2_fix_team_shuffle.md)
+- [`l4d2_hybrid_scoremod`](docs/l4d2_hybrid_scoremod.md)
+- [`l4d_boss_percent`](docs/l4d_boss_percent.md)
+- [`l4d_tank_control_eq`](docs/l4d_tank_control_eq.md)
+- [`l4d_tank_damage_announce`](docs/l4d_tank_damage_announce.md)
+- [`l4d_votepoll_fix`](docs/l4d_votepoll_fix.md)
+- [`match_vote`](docs/match_vote.md)
+- [`readyup`](docs/readyup.md)
+- [`spechud`](docs/spechud.md)
+- [`specrates`](docs/specrates.md)
 
-## Plugins y Assets Incluidos
+`l4d2_hybrid_scoremod` concentra los modos `legacy`, `hybrid` y `zone`. Las guías de [Scoremod clásico](docs/l4d2_scoremod.md) y [Scoremod Zone](docs/l4d2_hybrid_scoremod_zone.md) conservan la referencia histórica.
 
-Plugins y assets actualmente incluidos en esta capa:
+## Traducciones incluidas
 
-- `readyup.sp`
-- `readyup/`
-- `include/readyup.inc`
-- `autopause.sp`
-- `caster_system.sp`
-- `l4d_tank_damage_announce.sp`
-- `l4d_votepoll_fix.sp`
-- `l4d2_character_fix.sp`
-- `l4d2_fix_team_shuffle.sp`
-- `match_vote.sp`
-- `specrates.sp`
-- `l4d2_skill_detect.sp`
-- `l4d2_skill_detect/`
-- `l4d2_hybrid_scoremod.sp`
-- `l4d2_hybrid_scoremod_zone.sp`
-- `l4d2_scoremod.sp`
-- `include/l4d2_hybrid_scoremod.inc`
-- `include/l4d2_hybrid_scoremod_zone.inc`
-- `include/l4d2_scoremod.inc`
-- `translations/l4d2_hybrid_scoremod.phrases.txt`
-- `translations/es/l4d2_hybrid_scoremod.phrases.txt`
-- `translations/l4d2_scoremod.phrases.txt`
-- `translations/es/l4d2_scoremod.phrases.txt`
-- `translations/l4d2_fix_team_shuffle.phrases.txt`
-- `translations/match_vote.phrases.txt`
-- `translations/es/autopause.phrases.txt`
-- `translations/es/caster_system.phrases.txt`
-- `translations/es/match_vote.phrases.txt`
+El ZIP conserva los archivos base y las variantes disponibles en `es/`, `pt/` y `chi/`. La cobertura depende del plugin. Algunas variantes complementan un archivo base del proyecto competitivo, como `readyup.phrases.txt`. Instala el ZIP sobre el árbol del servidor competitivo para conservar esos archivos base.
 
 ## Alcance
 

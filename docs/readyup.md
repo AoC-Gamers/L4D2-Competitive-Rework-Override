@@ -12,6 +12,28 @@
 
 ## Cambios Aplicados
 
+### Cooperativo
+
+ReadyUp consulta a Left4DHooks al iniciar la preparación para saber si el modo tiene infectados controlados por jugadores. En cooperativo, los modos de `l4d_ready_enabled` funcionan así.
+
+| Valor | Condición |
+| --- | --- |
+| `1` | Todos los supervivientes humanos deben estar listos y debe haber al menos uno. |
+| `2` | El inicio automático calcula el umbral de `l4d_ready_autostart_min` a partir de `survivor_limit`. |
+| `3` | Basta con que un superviviente humano esté listo. |
+
+Con `l4d_ready_autoready` activo, el panel omite los avisos de ready manual. ReadyUp guarda el valor de `director_no_specials` al entrar en preparación y lo restaura al pasar a live, al cambiar de mapa durante la preparación o al descargar el plugin.
+
+### Capacidad que muestra el panel
+
+En cada actualización, el panel usa esta prioridad para mostrar el total en `Slots`.
+
+1. Usa `mv_maxplayers` si existe y su valor es distinto de `-1`.
+2. Si `mv_maxplayers` falta o vale `-1`, usa `sv_maxplayers` si existe y su valor es distinto de `-1`.
+3. Si `sv_maxplayers` también falta o vale `-1`, consulta a SourceMod por el cupo humano efectivo con `GetMaxHumanPlayers()`. [Referencia de SourceMod](https://sm.alliedmods.net/new-api/clients/GetMaxHumanPlayers)
+
+`l4d_ready_autostart_min` usa los límites de los equipos para calcular el umbral de inicio automático.
+
 ### Validación de clientes
 
 En `readyup/player.inc`:
@@ -21,7 +43,7 @@ En `readyup/player.inc`:
   - rango válido
   - `IsClientInGame(client)`
 
-Esto evita llamadas inválidas a `GetClientTeam()` sobre clientes no válidos.
+Esto evita llamadas inválidas a `GetClientTeam()`. Los comandos `sm_unready`, `sm_toggleready`, `sm_hide`, `sm_show` y `sm_return` también comprueban que el cliente esté en juego.
 
 ### Flujo de voto
 
@@ -73,13 +95,12 @@ En `readyup.sp`:
 
 ## Compatibilidad
 
-- no cambia el propósito funcional del plugin
-- las correcciones apuntan a robustez y prevención de crashes
-- el override actual sigue siendo cercano al original en `readyup.sp`, pero el módulo completo ya incorpora hardening operativo
+- En modos con infectados controlados por jugadores, las condiciones de ready siguen considerando ambos equipos.
+- El soporte para cooperativo usa `L4D_HasPlayerControlledZombies()` de Left4DHooks.
 
 ## Archivos Asociados
 
 - fuente principal
 - carpeta `readyup/`
 - include `readyup.inc`
-- depende además de las traducciones base del proyecto competitivo
+- Requiere `translations/readyup.phrases.txt` del proyecto competitivo base. El ZIP de Fix incluye `translations/pt/readyup.phrases.txt`.

@@ -72,6 +72,22 @@ Separación operativa:
 - `package-smx`: arma el árbol runtime compartido
 - `release`: genera `dist/sourcemod/artifact/` y el ZIP final
 
+## Validación local
+
+Desde la raíz del repositorio, ejecuta los pasos en este orden con Make y Bash.
+
+```bash
+make deps-smx
+make build-smx
+make package-smx
+make release
+bash scripts/ci-validate-artifact.sh
+```
+
+El validador comprueba el árbol generado en `dist/sourcemod/artifact/`. El ZIP local se guarda en `dist/release/`.
+
+La integración de upstream del 20 de noviembre de 2026 compiló los 14 plugins con SourceMod 1.12 sin warnings. También pasó el validador y se verificó la integridad del ZIP y el formato de las frases modificadas. La prueba en SRCDS sigue pendiente para ReadyUp en Coop, Versus y Scavenge, las respuestas de consola y RCON, los porcentajes de Dark Carnival: Remix y la transición a live con espectadores.
+
 ## WSL
 
 Si el repositorio está bajo `/mnt/`, `build-local.py` usa automáticamente un workspace temporal en `/tmp/l4d2crf-build` para evitar la penalización de I/O sobre discos montados de Windows.

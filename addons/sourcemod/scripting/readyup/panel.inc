@@ -60,6 +60,18 @@ Action MenuCmd_Timer(Handle timer)
 	return Plugin_Stop;
 }
 
+static int GetPanelMaxPlayers()
+{
+	ConVar matchLimit = FindConVar("mv_maxplayers");
+	int maxPlayers = matchLimit != null ? matchLimit.IntValue : -1;
+	if (maxPlayers != -1)
+		return maxPlayers;
+
+	ConVar serverLimit = FindConVar("sv_maxplayers");
+	maxPlayers = serverLimit != null ? serverLimit.IntValue : -1;
+	return maxPlayers == -1 ? GetMaxHumanPlayers() : maxPlayers;
+}
+
 void UpdatePanel()
 {
 	char survivorBuffer[400] = "";
@@ -85,7 +97,8 @@ void UpdatePanel()
 	g_cvServerNamer.GetString(ServerName, sizeof(ServerName));
 	
 	l4d_ready_cfg_name.GetString(cfgName, sizeof(cfgName));
-	Format(ServerBuffer, sizeof(ServerBuffer), "▸ Server: %s \n▸ Slots: %d/%d\n▸ Config: %s", ServerName, GetSeriousClientCount(), FindConVar("sv_maxplayers").IntValue, cfgName);
+	int maxPlayers = GetPanelMaxPlayers();
+	Format(ServerBuffer, sizeof(ServerBuffer), "▸ Server: %s \n▸ Slots: %d/%d\n▸ Config: %s", ServerName, GetSeriousClientCount(), maxPlayers, cfgName);
 	menuPanel.DrawText(ServerBuffer);
 	
 	FormatTime(ServerBuffer, sizeof(ServerBuffer), "%m/%d/%Y - %I:%M%p");
@@ -115,7 +128,7 @@ void UpdatePanel()
 				{
 					case ReadyMode_PlayerReady:
 					{
-						if (!inLiveCountdown) PrintHintText(client, "%t", hintPhrase[isReady]);
+						if (!inLiveCountdown && !l4d_ready_autoready.BoolValue) PrintHintText(client, "%t", hintPhrase[isReady]);
 						Format(nameBuf, sizeof(nameBuf), "%s %s%s\n", readySymbol[isReady], nameBuf, IsPlayerAfk(client) ? " [AFK]" : "");
 					}
 					case ReadyMode_AutoStart:
@@ -124,7 +137,7 @@ void UpdatePanel()
 					}
 					case ReadyMode_TeamReady:
 					{
-						if (!inLiveCountdown) PrintHintText(client, "%t", hintPhrase[type ? survivorReady : infectedReady]);
+						if (!inLiveCountdown && !l4d_ready_autoready.BoolValue) PrintHintText(client, "%t", hintPhrase[type ? survivorReady : infectedReady]);
 						Format(nameBuf, sizeof(nameBuf), "%s%s\n", nameBuf, IsPlayerAfk(client) ? " [AFK]" : "");
 					}
 				}
