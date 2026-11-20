@@ -14,6 +14,7 @@
 
 ### Corregido
 
+- **Vote Poll Fix** se instala en `plugins/fixes/` para reemplazar el binario que carga `generalfixes.cfg`.
 - **ReadyUp** resuelve la capacidad del panel con `mv_maxplayers`, luego `sv_maxplayers` y finalmente `GetMaxHumanPlayers()`.
 - **Comandos** se validan los clientes de ReadyUp, Match Vote, Caster System, Tank Control y Hybrid Scoremod. `sm_mapinfo` devuelve el desglose de puntuación desde la consola.
 - **Boss Percent** reconoce porcentajes de un dígito en Dark Carnival: Remix. **Tank Control** evita un error de depuración cuando no hay un controlador humano.

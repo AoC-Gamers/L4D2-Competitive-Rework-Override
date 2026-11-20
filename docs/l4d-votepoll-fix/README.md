@@ -3,6 +3,9 @@
 ## Plugin
 
 - `addons/sourcemod/scripting/l4d_votepoll_fix.sp`
+- `addons/sourcemod/plugins/fixes/l4d_votepoll_fix.smx`
+
+El archivo `cfg/generalfixes.cfg` del proyecto base carga el plugin desde `plugins/fixes/`. El ZIP instala el override en esa misma ruta.
 
 ## Motivo del Override
 

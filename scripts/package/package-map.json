@@ -6,7 +6,8 @@
       ],
       "anticheat": [],
       "fixes": [
-        "l4d2_fix_team_shuffle"
+        "l4d2_fix_team_shuffle",
+        "l4d_votepoll_fix"
       ],
       "optional": [
         "autopause",
@@ -17,7 +18,6 @@
         "l4d_boss_percent",
         "l4d_tank_control_eq",
         "l4d_tank_damage_announce",
-        "l4d_votepoll_fix",
         "readyup",
         "spechud",
         "specrates"

@@ -8,8 +8,8 @@ servidores de Left 4 Dead 2 basados en
 
 Instala el ZIP sobre un servidor con SourceMod y L4D2-Competitive-Rework. Copia
 el árbol `addons/sourcemod/` respetando las rutas. El paquete instala
-`match_vote.smx` directamente en `plugins/`, `l4d2_fix_team_shuffle.smx` en
-`plugins/fixes/` y los demás plugins en `plugins/optional/`.
+`match_vote.smx` directamente en `plugins/`, `l4d2_fix_team_shuffle.smx` y
+`l4d_votepoll_fix.smx` en `plugins/fixes/`, y los demás plugins en `plugins/optional/`.
 
 Hybrid Scoremod reúne `legacy`, `hybrid` y `zone` en
 `l4d2_hybrid_scoremod.smx`. Las configuraciones que cargaban la variante
