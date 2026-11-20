@@ -14,6 +14,7 @@
 
 ### Corregido
 
+- **Team Shuffle** respeta los bots reservados por jugadores AFK y evita intentar una segunda entrada al equipo Survivor cuando falla la toma de un bot.
 - **Vote Poll Fix** se instala en `plugins/fixes/` para reemplazar el binario que carga `generalfixes.cfg`.
 - **ReadyUp** resuelve la capacidad del panel con `mv_maxplayers`, luego `sv_maxplayers` y finalmente `GetMaxHumanPlayers()`.
 - **Comandos** se validan los clientes de ReadyUp, Match Vote, Caster System, Tank Control y Hybrid Scoremod. `sm_mapinfo` devuelve el desglose de puntuación desde la consola.

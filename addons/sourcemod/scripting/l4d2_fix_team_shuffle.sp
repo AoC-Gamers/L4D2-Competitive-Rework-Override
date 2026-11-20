@@ -916,25 +916,43 @@ void MovePlayerToTeam(int client, L4DTeam team)
 
 	if (team == L4DTeam_Survivor)
 	{
-		int bot = FindSurvivorBot();
-		if (bot > 0)
+		bool hasSurvivorBots;
+		int bot = FindFreeSurvivorBot(hasSurvivorBots);
+		if (bot == 0)
 		{
-			DebugPrintAll("MovePlayerToTeam -> survivor bot found client=%N bot=%N", client, bot);
-			ChangeClientTeam(client, view_as<int>(L4DTeam_Unassigned));
-			if (L4D_SetHumanSpec(bot, client) && L4D_TakeOverBot(client))
+			if (hasSurvivorBots)
 			{
-				DebugPrintAll("MovePlayerToTeam -> %N took over survivor bot %N", client, bot);
+				DebugPrintAll("MovePlayerToTeam -> all survivor bots reserved, leaving %N in current team", client);
 				return;
 			}
 
-			DebugPrintAll("MovePlayerToTeam -> native takeover failed for %N bot=%d, falling back", client, bot);
 			FakeClientCommand(client, "jointeam 2");
-			DebugPrintAll("MovePlayerToTeam -> fallback jointeam 2 for %N", client);
+			DebugPrintAll("MovePlayerToTeam -> jointeam 2 no bot for %N", client);
 			return;
 		}
 
-		FakeClientCommand(client, "jointeam 2");
-		DebugPrintAll("MovePlayerToTeam -> jointeam 2 no bot for %N", client);
+		int userId = GetClientUserId(client);
+		int botUserId = GetClientUserId(bot);
+		L4DTeam previousTeam = L4D_GetClientTeam(client);
+		ChangeClientTeam(client, view_as<int>(L4DTeam_Unassigned));
+
+		client = GetClientOfUserId(userId);
+		if (!IsRealClientInGame(client) || L4D_GetClientTeam(client) != L4DTeam_Unassigned)
+			return;
+
+		// Team-change callbacks can remove the bot or reserve it for another player.
+		bot = GetClientOfUserId(botUserId);
+		if (IsSurvivorBot(bot) && L4D_GetIdlePlayerOfBot(bot) <= 0
+			&& L4D_SetHumanSpec(bot, client) && L4D_TakeOverBot(client))
+		{
+			DebugPrintAll("MovePlayerToTeam -> userid=%d took over survivor bot userid=%d", userId, botUserId);
+			return;
+		}
+
+		DebugPrintAll("MovePlayerToTeam -> takeover failed or bot no longer available, userid=%d bot userid=%d", userId, botUserId);
+		client = GetClientOfUserId(userId);
+		if (IsRealClientInGame(client) && L4D_GetClientTeam(client) == L4DTeam_Unassigned)
+			ChangeClientTeam(client, view_as<int>(previousTeam));
 		return;
 	}
 
@@ -956,18 +974,24 @@ void MovePlayerToTeam(int client, L4DTeam team)
 	}
 }
 
-int FindSurvivorBot()
+bool IsSurvivorBot(int client)
 {
+	return client > 0 && IsClientInGame(client) && IsFakeClient(client) && L4D_GetClientTeam(client) == L4DTeam_Survivor;
+}
+
+int FindFreeSurvivorBot(bool &hasSurvivorBots)
+{
+	hasSurvivorBots = false;
 	for (int client = 1; client <= MaxClients; client++)
 	{
-		if (IsClientInGame(client) && IsFakeClient(client) && L4D_GetClientTeam(client) == L4DTeam_Survivor)
-		{
-			DebugPrintAll("FindSurvivorBot -> bot=%N", client);
+		if (!IsSurvivorBot(client))
+			continue;
+
+		hasSurvivorBots = true;
+		if (L4D_GetIdlePlayerOfBot(client) <= 0)
 			return client;
-		}
 	}
 
-	DebugPrintAll("FindSurvivorBot -> none");
 	return 0;
 }
 
