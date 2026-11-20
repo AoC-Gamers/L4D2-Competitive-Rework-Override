@@ -17,7 +17,7 @@ public Plugin myinfo =
 	author = "CanadaRox, Target",
 	description = "New and improved ready-up plugin with optimal for convenience.",
 	version = PLUGIN_VERSION,
-	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 // ========================

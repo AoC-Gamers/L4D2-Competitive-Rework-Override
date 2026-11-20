@@ -61,7 +61,7 @@ stock bool ValvePanel_ShiftInvalidString(char[] str, int maxlen)
  * @param client Client index to read
  * @param name Buffer to receive the name
  * @param length Buffer size
- * @param truncate True to truncate names longer than 18 characters
+ * @param truncate True to limit names to 12 bytes, including an ellipsis
  */
 stock void GetClientFixedName(int client, char[] name, int length, bool truncate = false)
 {
@@ -69,11 +69,29 @@ stock void GetClientFixedName(int client, char[] name, int length, bool truncate
 
 	ValvePanel_ShiftInvalidString(name, length);
 
-	if (truncate && strlen(name) > 18)
+	if (truncate && strlen(name) > 12)
 	{
-		name[15] = name[16] = name[17] = '.';
-		name[18] = 0;
+		int end = 0;
+		while (end < 9)
+		{
+			int charSize = IsCharMB(name[end]);
+			if (charSize == 0)
+				charSize = 1;
+			if (end + charSize > 9)
+				break;
+			end += charSize;
+		}
+		strcopy(name[end], length - end, "...");
 	}
+}
+
+void GetHudPlayerName(int client, char[] name, int length)
+{
+	GetClientFixedName(client, name, length, true);
+	if (IsFakeClient(client))
+		Format(name, length, "BOT | %s", name);
+	else
+		Format(name, length, "%dms | %s", RoundToNearest(GetClientAvgLatency(client, NetFlow_Both) * 1000.0), name);
 }
 
 /**

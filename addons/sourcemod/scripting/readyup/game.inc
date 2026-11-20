@@ -20,7 +20,7 @@ void RestartCountdowns(bool startOn)
 		RestartScvngSetupCountdown(startOn);
 		ResetAccumulatedTime();
 	}
-	else
+	else if (L4D_GetGameModeType() & GAMEMODE_VERSUS)
 	{
 		RestartVersusStartCountdown(startOn);
 	}

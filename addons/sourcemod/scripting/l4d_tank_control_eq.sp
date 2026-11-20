@@ -149,7 +149,7 @@ public Plugin myinfo =
     author = "arti, (Contributions by: Sheo, Sir, Altair-Sossai)",
     description = "Distributes the role of the tank evenly throughout the team, allows for overrides. (Includes forwards)",
     version = "0.0.28",
-    url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+    url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 }
 
 public void OnPluginStart()
@@ -535,7 +535,12 @@ void PlayerTeam_Event(Event hEvent, const char[] name, bool dontBroadcast)
             int tank = FindTankPlayer();
 
             if (g_cvTankDebug.BoolValue)
-                PrintToConsoleAll("[TC] Tank: %N - L4D2_GetTankCount: %i - initialTankLeft: %f - gotTankAt: %f", tank, L4D2_GetTankCount(), g_TankSelection.initialTankLeft, g_TankControl.gotTankAt);
+            {
+                if (tank == -1)
+                    PrintToConsoleAll("[TC] Tank: none - L4D2_GetTankCount: %i - initialTankLeft: %f - gotTankAt: %f", L4D2_GetTankCount(), g_TankSelection.initialTankLeft, g_TankControl.gotTankAt);
+                else
+                    PrintToConsoleAll("[TC] Tank: %N - L4D2_GetTankCount: %i - initialTankLeft: %f - gotTankAt: %f", tank, L4D2_GetTankCount(), g_TankSelection.initialTankLeft, g_TankControl.gotTankAt);
+            }
 
             float window = g_cvTankWindow.FloatValue;
             if (window > 0.0 && L4D2_GetTankCount() == 1 && tank != -1 && (g_TankControl.gotTankAt - g_TankSelection.initialTankLeft) < window)
@@ -634,7 +639,7 @@ void PlayerDeath_Event(Event hEvent, const char[] eName, bool dontBroadcast)
 Action Tank_Cmd(int client, int args)
 {
     // Only output if client is in-game and we have a queued tank
-    if (!IsClientInGame(client) || StrEqual(g_TankSelection.queuedSteamId, ""))
+    if (!client || !IsClientInGame(client) || StrEqual(g_TankSelection.queuedSteamId, ""))
         return Plugin_Handled;
     
     int tankClientId = FindInfectedPlayerBySteamId(g_TankSelection.queuedSteamId);
@@ -668,7 +673,10 @@ Action TankShuffle_Cmd(int client, int args)
  * Give the tank to a specific player.
  */
 Action GiveTank_Cmd(int client, int args)
-{    
+{
+    if (client && !IsClientInGame(client))
+        return Plugin_Handled;
+
     // Who are we targetting?
     char arg1[32];
     GetCmdArg(1, arg1, sizeof(arg1));
@@ -678,14 +686,14 @@ Action GiveTank_Cmd(int client, int args)
 
     if (target == -1 || !IsClientInGame(target) || IsFakeClient(target))
     {
-        CPrintToChat(client, "%t %t", "TagControl", "InvalidTarget");
+        CReplyToCommand(client, "%t %t", "TagControl", "InvalidTarget");
         return Plugin_Handled;
     }
 
     // Checking if on our desired team
     if (!bIsInfected(target))
     {
-        CPrintToChat(client, "%t %t", "TagControl", "NoInfected", target);
+        CReplyToCommand(client, "%t %t", "TagControl", "NoInfected", target);
         return Plugin_Handled;
     }
     

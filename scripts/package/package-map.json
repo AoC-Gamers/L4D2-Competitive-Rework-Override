@@ -1,0 +1,68 @@
+{
+  "build": {
+    "plugins": {
+      "root": [
+        "match_vote"
+      ],
+      "anticheat": [],
+      "fixes": [
+        "l4d2_fix_team_shuffle",
+        "l4d_votepoll_fix"
+      ],
+      "optional": [
+        "autopause",
+        "caster_assister",
+        "caster_system",
+        "l4d2_character_fix",
+        "l4d2_hybrid_scoremod",
+        "l4d_boss_percent",
+        "l4d_tank_control_eq",
+        "l4d_tank_damage_announce",
+        "readyup",
+        "spechud",
+        "specrates"
+      ]
+    }
+  },
+  "artifact": {
+    "addons": {
+      "sourcemod": {
+        "scripting": {
+          "files": [
+            "autopause.sp",
+            "caster_assister.sp",
+            "caster_system.sp",
+            "l4d2_character_fix.sp",
+            "l4d2_fix_team_shuffle.sp",
+            "l4d2_hybrid_scoremod.sp",
+            "l4d_boss_percent.sp",
+            "l4d_tank_control_eq.sp",
+            "l4d_tank_damage_announce.sp",
+            "l4d_votepoll_fix.sp",
+            "match_vote.sp",
+            "readyup.sp",
+            "spechud.sp",
+            "specrates.sp"
+          ],
+          "dirs": [
+            "l4d2_hybrid_scoremod",
+            "readyup",
+            "spechud"
+          ],
+          "include": {
+            "files": [
+              "caster_system.inc",
+              "l4d2_boss_percents.inc",
+              "l4d2_hybrid_scoremod.inc",
+              "l4d_tank_control_eq.inc",
+              "readyup.inc"
+            ]
+          }
+        },
+        "translations": {
+          "all": true
+        }
+      }
+    }
+  }
+}

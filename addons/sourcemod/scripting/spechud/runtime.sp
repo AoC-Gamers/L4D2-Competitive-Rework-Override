@@ -1,3 +1,5 @@
+static Handle s_respectateTimer;
+
 InitHookEvent()
 {
 	HookEvent("round_start",		Event_RoundStart,		EventHookMode_PostNoCopy);
@@ -10,6 +12,7 @@ InitHookEvent()
 void ResetRoundLiveState()
 {
 	g_bRoundLive = false;
+	delete s_respectateTimer;
 }
 
 void RefreshVersusBossState()
@@ -69,15 +72,17 @@ void ResetClientHudState(int client)
 	ResetHudHintState(client);
 }
 
-void ForceSpectatorsToSpectate()
+Action Timer_RespectateSpectators(Handle timer)
 {
+	s_respectateTimer = null;
 	for (int i = 1; i <= MaxClients; i++)
 	{
-		if (IsClientInGame(i) && L4D_GetClientTeam(i) == L4DTeam_Spectator && !IsClientSourceTV(i))
+		if (IsClientInGame(i) && L4D_GetClientTeam(i) == L4DTeam_Spectator && !IsFakeClient(i))
 		{
 			FakeClientCommand(i, "sm_spectate");
 		}
 	}
+	return Plugin_Stop;
 }
 
 public void OnClientDisconnect(int client)
@@ -90,6 +95,11 @@ public void OnMapStart()
 	ResetRoundLiveState();
 }
 
+public void OnMapEnd()
+{
+	ResetRoundLiveState();
+}
+
 public void OnRoundIsLive()
 {
 	RefreshReadyCfgName();
@@ -97,7 +107,9 @@ public void OnRoundIsLive()
 	
 	g_bRoundLive = true;
 
-	ForceSpectatorsToSpectate();
+	// Give the ready-up live sound time to reach spectators before changing their view.
+	delete s_respectateTimer;
+	s_respectateTimer = CreateTimer(0.2, Timer_RespectateSpectators);
 	
 	if (g_iGamemode == GAMEMODE_VERSUS)
 	{

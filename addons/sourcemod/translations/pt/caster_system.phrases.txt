@@ -1,0 +1,63 @@
+"Phrases"
+{
+
+	"KickSpecsAdmin"
+	{
+		"#format"	"{1:N}"
+		"pt"		"{default}[{green}!{default}] {blue}Espectadores {default}foram expulsos pelo {blue}Administrador {default}({olive}{1}{default})"
+	}
+
+
+	"KickSpecsVoteSpec"
+	{
+		"pt"		"{default}[{olive}Cast{default}] {blue}Espectadores {default}não podem iniciar uma votação para {green}expulsar espectadores{default}."
+	}
+
+
+	"VoteInProgress"
+	{
+		"pt"		"{default}[{olive}Cast{default}] Já há {olive}uma votação {green}em andamento{default}."
+	}
+
+
+	"VoteDelay"
+	{
+		"#format"	"{1:d}"
+		"pt"		"{default}[{olive}Cast{default}] Aguarde mais {blue}{1}s {default}para iniciar uma votação."
+	}
+
+
+	"ForbidAddons"
+	{
+		"pt"		"{blue}[{default}!{blue}] {default}Addons agora estão {green}proibidos {default}para casters."
+	}
+
+
+	"AllowAddons"
+	{
+		"pt"		"{blue}[{default}!{blue}] {default}Addons agora estão {green}permitidos {default}para casters."
+	}
+
+
+	"KickSpecsVoteTitle"
+	{
+		"pt"		"Expulsar espectadores que não são administradores nem casters?"
+	}
+
+
+	"KickSpecsVoteSuccess"
+	{
+		"pt"		"Tchau Espectadores!"
+	}
+
+
+	"KickSpecsReason"
+	{
+		"pt"		"Sem Espectadores, por favor!"
+	}
+
+	"KickSpecsConsole"
+	{
+		"pt"		"O servidor expulsou os espectadores."
+	}
+}

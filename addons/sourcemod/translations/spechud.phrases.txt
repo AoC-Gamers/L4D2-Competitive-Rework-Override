@@ -262,14 +262,14 @@
 
 	"Spechud_HybridStats"
 	{
-		"#format"	"{1:.0f},{2:.0f},{3:d},{4:.0f}"
-		"en"		"> HB: {1:.0f}%% | DB: {2:.0f}%% | Pills: {3} / {4:.0f}%%"
+		"#format"	"{1:d},{2:.0f},{3:d},{4:.0f},{5:d},{6:.0f}"
+		"en"		"> HB: {1} <{2:.0f}%%> | DB: {3} <{4:.0f}%%> | Pills: {5} <{6:.0f}%%>"
 	}
 
 	"Spechud_HybridLegacyStats"
 	{
-		"#format"	"{1:.0f}"
-		"en"		"> HB: {1:.0f}%%"
+		"#format"	"{1:d},{2:.0f}"
+		"en"		"> HB: {1} <{2:.0f}%%>"
 	}
 
 	"Spechud_BonusValue"

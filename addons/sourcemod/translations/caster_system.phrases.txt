@@ -224,6 +224,11 @@
 		"en"		"Spectators were kicked by admin {1}."
 	}
 
+	"KickSpecsConsole"
+	{
+		"en"		"Spectators were kicked by the server."
+	}
+
 	"KickSpecsVoteSpec"
 	{
 		"en"		"Spectators cannot call a vote to kick spectators."

@@ -64,7 +64,7 @@ public Plugin myinfo =
 	author		= "Visor, lechuga",
 	description = "Forces low rates on spectators",
 	version		= "1.3",
-	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)

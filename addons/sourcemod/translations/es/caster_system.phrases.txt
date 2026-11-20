@@ -224,6 +224,11 @@
 		"es"		"Los espectadores fueron expulsados por el admin {1}."
 	}
 
+	"KickSpecsConsole"
+	{
+		"es"		"El servidor expulsó a los espectadores."
+	}
+
 	"KickSpecsVoteSpec"
 	{
 		"es"		"Los espectadores no pueden iniciar una votación para expulsar espectadores."

@@ -39,7 +39,7 @@ public Plugin myinfo =
 	author = "Griffin and Blade",
 	description = "Announce damage dealt to tanks by survivors",
 	version = "0.6.7",
-	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public void OnPluginStart()

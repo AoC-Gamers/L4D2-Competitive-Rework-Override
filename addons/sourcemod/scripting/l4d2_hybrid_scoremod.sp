@@ -330,7 +330,7 @@ public Plugin myinfo =
 	author		= "Visor, Sir",
 	description = "The next generation scoring mod",
 	version		= "3.0.0",
-	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url			= "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 #include "l4d2_hybrid_scoremod/shared.sp"

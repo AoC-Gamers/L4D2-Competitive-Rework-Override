@@ -1,6 +1,6 @@
 // Shared state and typed snapshots for spechud.
 
-#define SPECHUD_DRAW_INTERVAL 0.5
+#define SPECHUD_DRAW_INTERVAL 1.0
 #define TRANSLATION_FILE "spechud.phrases"
 
 #define LIBRARY_READYUP "readyup"

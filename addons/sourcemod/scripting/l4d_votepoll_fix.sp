@@ -23,7 +23,7 @@ public Plugin myinfo =
 	author = "raziEiL [disawar1]",
 	description = "Changes number of players eligible to vote",
 	version = PLUGIN_VERSION,
-	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Fix"
+	url = "https://github.com/AoC-Gamers/L4D2-Competitive-Rework-Override"
 };
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
