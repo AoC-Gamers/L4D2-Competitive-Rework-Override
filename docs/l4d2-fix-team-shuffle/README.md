@@ -39,6 +39,22 @@ El aviso de espera dejó de depender de un timer repetitivo y pasó a un flujo r
 - si un jugador intenta entrar a un equipo incorrecto durante la reorganización, vuelve a spectators y recibe contexto por chat
 - al terminar la ventana de organización, se imprime un mensaje global
 
+### Reasignación a Survivors
+
+Al recolocar a un jugador del roster, el plugin base selecciona un bot sin
+dueño AFK y vuelve a comprobar que siga disponible después de mover al jugador
+a Sin asignar. Si todos los bots pertenecen a jugadores AFK, el jugador
+conserva su equipo. Si falla la toma y queda sin asignar, vuelve al equipo
+anterior. El comando `jointeam 2` se reserva para cuando el equipo Survivor no
+tiene bots.
+
+La corrección se distribuye en `addons/sourcemod/plugins/fixes/l4d2_fix_team_shuffle.smx`.
+Las pruebas parciales con respuestas simuladas del motor cubrieron el caso de
+tres humanos y un bot reservado, una reserva asignada durante el movimiento y
+un fallo de toma. Sigue pendiente comprobar en una partida real si reaparece
+el quinto Survivor. Si vuelve a ocurrir, el siguiente caso a evaluar es un
+recuento al salir del área segura que preserve los bots con dueño AFK.
+
 ### API pública y estado persistido
 
 - agrega natives `L4D2FixTeamShuffle_*`
